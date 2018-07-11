@@ -1,11 +1,10 @@
-
-exports.sortData = function(rawData) {
+exports.sortAndExtractData = function (rawData) {
     rawData.sort((a, b) => a['timeToStation'] > b['timeToStation']);
     return rawData.slice(0, 5);
 }
 
 
-exports.displayBuses = function(buses) {
+exports.displayBuses = function (buses) {
     console.log(`\nThe next buses to arrive at ${buses[0]["stationName"]} are:\n`)
     for (let bus of buses) {
         console.log('Bus Route:', bus["lineId"]);
