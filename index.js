@@ -9,19 +9,10 @@ function main() {
                 DisplayBuses.displayBuses(sortedBusArrivals);
             });
             tflApi.getBusArrivals(nearestBusStopsId[1], function(sortedBusArrivals) {
-                DisplayBuses.displayBuses(sortedBusArrivals);
+                    DisplayBuses.displayBuses(sortedBusArrivals);
             });
         });
     });
-
-    /*
-    const postcode = getCoordsFromPostcode.getPostcodeAndThen();
-    console.log(postcode);
-    const nearestBusStops = tflApi.getNearestTwoBusStopAndThen(postcode["result"]["longitude"], postcode["result"]["latitude"]);
-    console.log(nearestBusStops);
-    tflApi.getBusArrivals(nearestBusStops["places"][0]["id"]);
-    tflApi.getBusArrivals(nearestBusStops["places"][1]["id"]);
-    */
 }
 
 main();

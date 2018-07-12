@@ -3,9 +3,8 @@ exports.sortAndExtractData = function (rawData) {
     return rawData.slice(0, 5);
 }
 
-
 exports.displayBuses = function (buses) {
-    console.log(`\nThe next buses to arrive at ${buses[0]["stationName"]} are:\n`)
+    console.log(`\nThe next buses to arrive at ${buses[0]["stationName"]} are:\n`);
     for (let bus of buses) {
         console.log('Bus Route:', bus["lineId"]);
         console.log('Destination:', bus["destinationName"]);
