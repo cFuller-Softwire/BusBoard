@@ -3,23 +3,19 @@ const tflApi = require('./tflApi');
 const displayBuses = require('./sortAndDisplayBuses');
 const errorHandler = require('./errorHandler');
 
-function main() {
-    postcodeApi.getPostcodeAndThen()
-        .then(function (coords) {
-            return tflApi.getNearestTwoBusStopAndThen(coords)
-        })
+exports.main = function(postcode) {
+    return postcodeApi
+        .getPostcodeCoords(postcode)
+        .then((coords) => tflApi.getNearestTwoBusStop(coords))
         .then(function (nearestBusStop) {
-            const sortedTwoBus = [];
-            for (let item in nearestBusStop) {
-                sortedTwoBus.push(tflApi.getBusArrivals(nearestBusStop[item]));
-            }
+            const sortedTwoBus = nearestBusStop.map(x => tflApi.getBusArrivals(x));
             return Promise.all(sortedTwoBus);
         })
-        .then(function (sortedBusArrivals) {
-            displayBuses.displayBuses(sortedBusArrivals);
+        //.then((sortedBusArrivals) => displayBuses.displayBuses(sortedBusArrivals))
+        .then(function (sortedBusArrivals){
+            return displayBuses.displayBuses(sortedBusArrivals);
         })
         .catch(errorHandler.error)
-}
+};
 
-main();
 
