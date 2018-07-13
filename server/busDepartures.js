@@ -10,7 +10,7 @@ exports.getNextFiveBusArrivals = function(postcode) {
             const sortedTwoBus = nearestBusStop.map(busStopCode => tflApi.getBusArrivals(busStopCode));
             return Promise.all(sortedTwoBus);
         })
-        .then((sortedBusArrivals) => displayBuses.displayBuses(sortedBusArrivals))
+        .then((sortedBusArrivals) => displayBuses.extractBusArrivals(sortedBusArrivals))
         .catch((err) => console.log(err));
 };
 

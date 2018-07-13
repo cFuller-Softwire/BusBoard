@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Departure boards</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="departures.js"></script>
+</head>
+<body>
+<h1>BusBoard</h1>
+<form action="#" onsubmit="return getDepartures();">
+    Postcode:<br>
+    <input type="text" id="formPostcode" name="postcode">
+    <input type="submit" value="Find Next Buses">
+</form>
+<div id="departures">
+    <h2 id="departuresTitle">Departures will be displayed here.</h2>
+    <h3 id="stopOne"></h3>
+    <ul id="busArrivalsAtStopOne">
+    </ul>
+    <h3 id="stopTwo"></h3>
+    <ul id="busArrivalsAtStopTwo">
+    </ul>
+</div>
+</body>
+</html>
