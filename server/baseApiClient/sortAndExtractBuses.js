@@ -4,19 +4,17 @@ exports.sortAndExtractData = function (rawData) {
 };
 
 exports.extractBusArrivals = function (buses) {
-    buses[0] = buses[0].map(function(bus) {
-        return {
-            stationName: bus.stationName,
-            lineId: bus.lineId,
-            destinationName: bus.destinationName,
-            timeToStation: `${Math.floor((bus.timeToStation) / 60)} minutes ${bus.timeToStation % 60} seconds`
-        } });
-    buses[1] = buses[1].map(function(bus) {
-        return {
-            stationName: bus.stationName,
-            lineId: bus.lineId,
-            destinationName: bus.destinationName,
-            timeToStation: `${Math.floor((bus.timeToStation) / 60)} minutes ${bus.timeToStation % 60} seconds`
-        } });
-    return JSON.stringify(buses);
+    return JSON.stringify([extractBusArrivalsForStop(buses[0]), extractBusArrivalsForStop(buses[1])])
 };
+
+function extractBusArrivalsForStop(buses) {
+    buses = buses.map(function (bus) {
+        return {
+            stationName: bus.stationName,
+            lineId: bus.lineId,
+            destinationName: bus.destinationName,
+            timeToStation: `${Math.floor((bus.timeToStation) / 60)} minutes ${bus.timeToStation % 60} seconds`
+        }
+    });
+    return buses
+}

@@ -1,4 +1,4 @@
-const sortBuses = require('./sortAndDisplayBuses');
+const sortBuses = require('./sortAndExtractBuses');
 const getRequest = require('./baseApiClient');
 
 const API_QUERY_STRING_TFL = 'app_id=66354b18&app_key=e9af9af78d300a4ee2674b1cef0333cc';

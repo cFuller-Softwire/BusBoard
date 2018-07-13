@@ -1,6 +1,6 @@
 const postcodeApi = require('./baseApiClient/postcodeApi');
 const tflApi = require('./baseApiClient/tflApi');
-const displayBuses = require('./baseApiClient/sortAndDisplayBuses');
+const displayBuses = require('./baseApiClient/sortAndExtractBuses');
 
 exports.getNextFiveBusArrivals = function(postcode) {
     return postcodeApi
