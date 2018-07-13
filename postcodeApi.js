@@ -2,6 +2,7 @@ const readline = require('readline-sync');
 const getRequest = require('./baseApiClient');
 
 exports.getPostcodeCoords = function (postcode) {
+    //For console application.
     //console.log("Please enter your postcode. (Softwire: 'NW5 1TU')");
     //const postcode = readline.prompt().replace(" ","");
     const postcodeUrl = `https://api.postcodes.io/postcodes/${postcode}`;

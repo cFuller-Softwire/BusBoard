@@ -15,9 +15,7 @@ exports.displayBuses = function (buses) {
             console.log('Arriving in:', minutes, "minutes and", seconds, "seconds\n");
         }
     }*/
-    //console.log(buses);
     const displayBusJson = [];
-
     for (let busstop of buses) {
         displayBusJson.push(`stationName: ${busstop[0]["stationName"]}`,);
         for (let bus of busstop) {

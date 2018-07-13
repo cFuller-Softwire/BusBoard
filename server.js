@@ -1,15 +1,14 @@
 const express = require("express");
 const index = require("./index");
-const errorHandler = require('./errorHandler');
 
 const app = express();
-const postCodeRegex = '^([Gg][Ii][Rr] 0[Aa]{2})|((([A-Za-z][0-9]{1,2})|(([A-Za-z][A-Ha-hJ-Yj-y][0-9]{1,2})|(([AZa-z][0-9][A-Za-z])|([A-Za-z][A-Ha-hJ-Yj-y][0-9]?[A-Za-z]))))[0-9][A-Za-z]{2})$';
-app.get(`/currentDepartures/:postcode${postCodeRegex}`, (req, res) => {
+app.get(`/currentDepartures/postcode/:postcode`, (req, res) => {
     index
-        .main(req.params["1"])
-        .then((JsonBusData) => res.send(JsonBusData))
-        .catch(errorHandler.error);
-
+        .main(req.params.postcode)
+        .then((JsonBusData) => res.status(200).send(JsonBusData))
+        .catch(function(err){
+            console.log(err);
+            res.status(500).send(err);
+        });
 });
-app.use(express.static('frontend'));
 app.listen(3000, () => console.log(`App listening on port 3000.`));
