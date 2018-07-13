@@ -17,12 +17,16 @@ exports.displayBuses = function (buses) {
     }*/
     const displayBusJson = [];
     for (let busstop of buses) {
-        displayBusJson.push(`stationName: ${busstop[0]["stationName"]}`,);
+        let oneStopArrivals = [];
         for (let bus of busstop) {
-            displayBusJson.push(`lineId: ${bus["lineId"]}`,);
-            displayBusJson.push(`destinationName: ${bus["destinationName"]}`,);
-            displayBusJson.push(`timeToStation: ${bus["timeToStation"]}`,);
+            let oneBusArrival = {};
+            oneBusArrival["stationName"] = bus["stationName"];
+            oneBusArrival["lineId"] = bus["lineId"];
+            oneBusArrival["destinationName"] = bus["destinationName"];
+            oneBusArrival["timeToStation"] = bus["timeToStation"];
+            oneStopArrivals.push(oneBusArrival);
         }
+        displayBusJson.push(oneStopArrivals);
     }
     return JSON.stringify(displayBusJson,null,2);
 };

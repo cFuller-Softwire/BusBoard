@@ -2,6 +2,7 @@ const express = require("express");
 const index = require("./index");
 
 const app = express();
+app.use(express.static('frontend'));
 app.get(`/currentDepartures/postcode/:postcode`, (req, res) => {
     index
         .main(req.params.postcode)
