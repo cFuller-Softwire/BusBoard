@@ -3,6 +3,7 @@ const busDepartures = require("./busDepartures");
 
 const app = express();
 app.use(express.static('../frontend'));
+app.use('/longBusJourney', express.static('frontend/longBusJourney.html'));
 app.get(`/currentDepartures/postcode/:postcode`, (req, res) => {
     busDepartures
         .getNextFiveBusArrivals(req.params.postcode)

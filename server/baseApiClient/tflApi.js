@@ -15,6 +15,5 @@ exports.getBusArrivals = function (stopCode) {
     const busArrivalUrlOne = `https://api.tfl.gov.uk/StopPoint/${stopCode}/Arrivals?${API_QUERY_STRING_TFL}`;
     return getRequest
         .get(busArrivalUrlOne)
-        .then(busArrivalsJson => sortBuses.sortAndExtractData(busArrivalsJson));
+        .then(busArrivalsJson => sortBuses.sortAndExtractBusArrivals(busArrivalsJson));
 };
-

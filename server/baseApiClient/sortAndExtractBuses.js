@@ -1,4 +1,4 @@
-exports.sortAndExtractData = function (rawData) {
+exports.sortAndExtractBusArrivals = function (rawData) {
     rawData.sort((a, b) => a['timeToStation'] > b['timeToStation']);
     return rawData.slice(0, 5);
 };
@@ -8,13 +8,11 @@ exports.extractBusArrivals = function (buses) {
 };
 
 function extractBusArrivalsForStop(buses) {
-    buses = buses.map(function (bus) {
-        return {
-            stationName: bus.stationName,
-            lineId: bus.lineId,
-            destinationName: bus.destinationName,
-            timeToStation: `${Math.floor((bus.timeToStation) / 60)} minutes ${bus.timeToStation % 60} seconds`
-        }
-    });
+    buses = buses.map(bus => ({
+        stationName: bus.stationName,
+        lineId: bus.lineId,
+        destinationName: bus.destinationName,
+        timeToStation: `${Math.floor((bus.timeToStation) / 60)} minutes ${bus.timeToStation % 60} seconds`
+    }));
     return buses
 }
