@@ -1,13 +1,13 @@
 const express = require("express");
-const index = require("./index");
+const busDepartures = require("./busDepartures");
 
 const app = express();
-app.use(express.static('frontend'));
+app.use(express.static('../frontend'));
 app.get(`/currentDepartures/postcode/:postcode`, (req, res) => {
-    index
-        .main(req.params.postcode)
-        .then((JsonBusData) => res.status(200).send(JsonBusData))
-        .catch(function(err){
+    busDepartures
+        .getNextFiveBusArrivals(req.params.postcode)
+        .then((jsonBusArrivals) => res.status(200).send(jsonBusArrivals))
+        .catch(function (err) {
             console.log(err);
             res.status(500).send(err);
         });
